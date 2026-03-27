@@ -1,0 +1,20 @@
+/* ============================================================
+   mdothree-landing — dark-mode.css
+   ============================================================ */
+
+body.dark {
+  --bg: #0A0F1A;
+  --surface: #111827;
+  --text-primary: #F1F5F9;
+  --text-secondary: #64748B;
+  --border: #1E293B;
+  --card-bg: #111827;
+  --header-bg: rgba(10, 15, 26, 0.88);
+}
+
+body.dark .hero-grid-bg {
+  opacity: 0.15;
+}
+
+body.dark .theme-toggle .sun { opacity: 0.4; }
+body:not(.dark) .theme-toggle .moon { opacity: 0.4; }

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful - mdothree</title>
+  <meta name="robots" content="noindex">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Mono', ui-monospace, monospace;
+      background: #020617;
+      color: #E2E8F0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 480px;
+    }
+    .icon { font-size: 4rem; margin-bottom: 20px; }
+    h1 {
+      font-size: 1.8rem;
+      color: #10B981;
+      margin-bottom: 12px;
+    }
+    .message {
+      color: #94A3B8;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #1E293B;
+      border-top-color: #10B981;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn {
+      display: inline-block;
+      background: #10B981;
+      color: #020617;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 150ms;
+    }
+    .btn:hover {
+      background: #34D399;
+      transform: translateY(-1px);
+    }
+    .error { color: #EF4444; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="spinner" id="loading"></div>
+    <div class="icon" id="success-icon" style="display:none;">🎉</div>
+    <div class="icon error" id="error-icon" style="display:none;">❌</div>
+    
+    <h1 id="title">Verifying Payment...</h1>
+    <p class="message" id="message">Please wait while we confirm your payment.</p>
+    
+    <div id="success-actions" class="hidden">
+      <a href="/account.html" class="btn">Go to Account →</a>
+    </div>
+    
+    <div id="error-actions" class="hidden">
+      <a href="/pricing.html" class="btn">Try Again</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initFirebase } from '/js/firebase.js';
+    import { doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+    const db = null;
+    let user = null;
+
+    async function init() {
+      try {
+        user = await initFirebase();
+        
+        const params = new URLSearchParams(window.location.search);
+        const sessionId = params.get('session_id');
+        
+        if (!sessionId) {
+          showError('No session ID found. If you completed payment, please check your account.');
+          return;
+        }
+
+        // Verify payment with our API
+        const response = await fetch(`/api/verify-session?session_id=${sessionId}`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to verify payment');
+        }
+        
+        const session = await response.json();
+        
+        if (session.payment_status === 'paid') {
+          await grantProAccess(session);
+          showSuccess();
+        } else {
+          showError('Payment was not completed. Please try again.');
+        }
+      } catch (e) {
+        console.error('Payment verification error:', e);
+        showError('Something went wrong verifying your payment. Please check your account status.');
+      }
+    }
+
+    async function grantProAccess(session) {
+      if (!user || !db) {
+        console.log('No user logged in - will require login on next visit');
+        return;
+      }
+
+      try {
+        // Set subscription status in Firestore
+        const expDate = new Date();
+        expDate.setMonth(expDate.getMonth() + 1); // Default to monthly
+        
+        await setDoc(doc(db, 'subscriptions', user.uid), {
+          status: 'active',
+          stripeSessionId: session.id,
+          stripeCustomerId: session.customer_id,
+          subscriptionId: session.subscription_id,
+          expiresAt: expDate,
+          updatedAt: new Date(),
+        }, { merge: true });
+        
+        console.log('Pro access granted successfully');
+      } catch (e) {
+        console.error('Failed to save subscription status:', e);
+      }
+    }
+
+    function showSuccess() {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('success-icon').style.display = 'block';
+      document.getElementById('title').textContent = "You're Pro!";
+      document.getElementById('message').textContent = 'Your payment was successful. All features are now unlocked. Welcome to mdothree Pro!';
+      document.getElementById('success-actions').style.display = 'block';
+    }
+
+    function showError(msg) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('error-icon').style.display = 'block';
+      document.getElementById('title').textContent = 'Verification Failed';
+      document.getElementById('title').style.color = '#EF4444';
+      document.getElementById('message').textContent = msg;
+      document.getElementById('error-actions').style.display = 'block';
+    }
+
+    init();
+  </script>
+</body>
+</html>

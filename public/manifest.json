@@ -1,0 +1,17 @@
+{
+  "name": "MDOThree",
+  "short_name": "MDOThree",
+  "description": "Utility & Productivity Tools",
+  "theme_color": "#fafafa",
+  "background_color": "#fafafa",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

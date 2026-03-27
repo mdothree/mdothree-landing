@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDOThree - Utility & Productivity Tools</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+        .tool-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-color: #ccc;
+        }
+        .tool-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .tool-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .tool-card p { color: #888; font-size: 0.8rem; }
+        .status {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .status-soon { background: #fef3c7; color: #d97706; }
+        .category {
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 2rem;
+        }
+        .category h2 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: #999;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+        footer a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>MDOThree</h1>
+        <p class="tagline">Simple tools for everyday tasks</p>
+        
+        <div class="category">
+            <h2>Document Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">&#128462;</div>
+                    <h3>PDF Merge</h3>
+                    <p>Combine multiple PDFs</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#9986;</div>
+                    <h3>PDF Split</h3>
+                    <p>Extract pages from PDF</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#128230;</div>
+                    <h3>PDF Compress</h3>
+                    <p>Reduce file size</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2>Image Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">&#128247;</div>
+                    <h3>Image Resize</h3>
+                    <p>Resize images instantly</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#128260;</div>
+                    <h3>Image Convert</h3>
+                    <p>Convert between formats</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#127912;</div>
+                    <h3>Image Compress</h3>
+                    <p>Optimize for web</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2>Developer Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">{ }</div>
+                    <h3>JSON Formatter</h3>
+                    <p>Beautify & validate JSON</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#128273;</div>
+                    <h3>Hash Generator</h3>
+                    <p>MD5, SHA-1, SHA-256</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#9635;</div>
+                    <h3>QR Generator</h3>
+                    <p>Create QR codes</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <h2>Text Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">&#128221;</div>
+                    <h3>Word Counter</h3>
+                    <p>Count words & characters</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">Aa</div>
+                    <h3>Case Converter</h3>
+                    <p>Change text case</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">&#8596;</div>
+                    <h3>Text Diff</h3>
+                    <p>Compare text differences</p>
+                    <span class="status status-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>A <a href="https://latarence.com">Lamar</a> Platform</p>
+    </footer>
+</body>
+</html>

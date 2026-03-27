@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Upgrade to mdothree Pro — unlock bcrypt, HMAC, breach checker, cron parser, gradient generator, and unlimited history." />
+  <link rel="canonical" href="https://mdothree.com/pro" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="mdothree Pro" />
+  <meta property="og:description" content="Upgrade to mdothree Pro — unlock bcrypt, HMAC, breach checker, cron parser, gradient generator, and unlimited history." />
+  <meta property="og:url" content="https://mdothree.com/pro" />
+  <meta property="og:image" content="./og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="mdothree Pro" />
+  <meta name="twitter:description" content="Upgrade to mdothree Pro — unlock bcrypt, HMAC, breach checker, cron parser, gradient generator, and unlimited history." />
+  <title>Upgrade to Pro — mdothree</title>
+  <meta name="firebase-config" content='{"apiKey":"REPLACE_WITH_API_KEY","authDomain":"REPLACE.firebaseapp.com","projectId":"REPLACE_WITH_PROJECT_ID","storageBucket":"REPLACE.appspot.com","messagingSenderId":"REPLACE","appId":"REPLACE_WITH_APP_ID"}'>
+  <meta name="stripe-config" content='{"publishableKey":"REPLACE_WITH_STRIPE_PUBLISHABLE_KEY","priceIdMonthly":"REPLACE_WITH_STRIPE_PRICE_ID_MONTHLY","priceIdYearly":"REPLACE_WITH_STRIPE_PRICE_ID_YEARLY","portalUrl":"https://billing.stripe.com/p/login/REPLACE"}'>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#10B981" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" />
+  <link rel="preconnect" href="https://js.stripe.com" />
+  <link rel="preconnect" href="https://hooks.stripe.com" />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/pro.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/">m<span class="dot">.</span>3</a>
+    <nav class="main-nav">
+      <a href="/#pdf">PDF</a>
+      <a href="/#developer">Dev</a>
+      <a href="/#security">Security</a>
+    </nav>
+    <div id="header-auth" style="margin-left:auto;display:flex;align-items:center;gap:10px;font-size:0.85rem"></div>
+  </header>
+
+  <main class="pro-page">
+
+    <!-- Hero -->
+    <div class="pro-hero">
+      <div class="pro-eyebrow">⭐ mdothree Pro</div>
+      <h1 class="pro-headline">Unlock every tool,<br /><em>no limits.</em></h1>
+      <p class="pro-sub">One subscription. Full access to every Pro feature across every mdothree.com utility — hash, password, color, and time tools.</p>
+
+      <!-- Billing toggle -->
+      <div class="billing-toggle">
+        <button class="billing-btn active" data-billing="monthly">Monthly</button>
+        <button class="billing-btn" data-billing="yearly">
+          Yearly <span class="save-pill">Save 25%</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="pricing-card">
+        <div class="plan-name">Free</div>
+        <div class="plan-price"><sup>$</sup>0<sub>/mo</sub></div>
+        <div class="plan-billed">Forever free, no card needed</div>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="feat-check">✓</span> SHA-256, SHA-512, MD5, CRC32</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> Password generator (up to 5 at once)</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> Timestamp &amp; timezone converter</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> Color picker &amp; converter</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> 5 saved items per tool</li>
+          <li class="plan-feature"><span class="feat-x">✕</span> bcrypt / HMAC hashing</li>
+          <li class="plan-feature"><span class="feat-x">✕</span> Breach checker</li>
+          <li class="plan-feature"><span class="feat-x">✕</span> Cron parser &amp; business days</li>
+          <li class="plan-feature"><span class="feat-x">✕</span> Gradient &amp; colorblind simulator</li>
+        </ul>
+        <a href="/" class="plan-cta secondary">Use for free</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="pricing-card featured">
+        <div class="featured-label">Most popular</div>
+        <div class="plan-name" style="color:var(--emerald)">Pro</div>
+        <div class="plan-price" id="pro-price"><sup>$</sup>4<sub>/mo</sub></div>
+        <div class="plan-billed" id="pro-billed">Billed monthly · cancel anytime</div>
+        <ul class="plan-features">
+          <li class="plan-feature"><span class="feat-check">✓</span> Everything in Free</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>bcrypt, HMAC</strong> hashing</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Batch hashing</strong> — unlimited</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Breach checker</strong> (HaveIBeenPwned)</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Passphrase generator</strong></li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Cron parser</strong> &amp; business days</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Gradient &amp; colorblind</strong> simulator</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Unlimited</strong> saved palettes, presets &amp; history</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Export</strong> CSS vars, SCSS, JSON, CSV</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> <strong>Bulk generate</strong> up to 50 passwords</li>
+          <li class="plan-feature"><span class="feat-check">✓</span> Priority support</li>
+        </ul>
+        <button class="plan-cta primary" id="subscribe-btn">Get Pro →</button>
+      </div>
+    </div>
+
+    <!-- Embedded Stripe Payment Element -->
+    <div class="checkout-section" id="checkout-section">
+      <div class="checkout-title">Complete your subscription</div>
+      <div class="checkout-sub" id="checkout-sub">mdothree Pro — $4/month · Cancel anytime</div>
+      <div id="payment-element" class="loading"></div>
+      <div id="payment-error"></div>
+      <button class="checkout-submit" id="checkout-submit" disabled>
+        <span id="checkout-submit-label">Processing…</span>
+      </button>
+      <p class="checkout-legal">
+        Secured by <a href="https://stripe.com" target="_blank" rel="noopener">Stripe</a>.
+        By subscribing you agree to our <a href="/terms">Terms</a>. Cancel anytime from your <a href="#" id="billing-portal-link">billing portal</a>.
+      </p>
+    </div>
+
+    <!-- Feature comparison table -->
+    <div class="compare-section">
+      <div class="compare-title">Full feature comparison</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>⭐ Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="compare-cat" colspan="3">Hash Tools</td></tr>
+          <tr><td>SHA-256, SHA-512, SHA-384, SHA-1, MD5, CRC32</td><td>✓</td><td>✓</td></tr>
+          <tr><td>bcrypt hashing</td><td>—</td><td>✓</td></tr>
+          <tr><td>HMAC generation</td><td>—</td><td>✓</td></tr>
+          <tr><td>File hash verification</td><td>—</td><td>✓</td></tr>
+          <tr><td>Batch hashing</td><td>Up to 10</td><td>Unlimited</td></tr>
+          <tr><td>Saved favourites &amp; history</td><td>5 entries</td><td>Unlimited</td></tr>
+          <tr><td>UUID v1 / v4 / v5 generator</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Base64 / Hex / Base32 encoder</td><td>✓</td><td>✓</td></tr>
+
+          <tr><td class="compare-cat" colspan="3">Password Tools</td></tr>
+          <tr><td>Password generator</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Bulk generate (at once)</td><td>Up to 5</td><td>Up to 50</td></tr>
+          <tr><td>Password strength meter</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Passphrase generator</td><td>—</td><td>✓</td></tr>
+          <tr><td>PIN generator</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Breach checker (HIBP)</td><td>—</td><td>✓</td></tr>
+          <tr><td>Password history</td><td>5 entries</td><td>Unlimited</td></tr>
+
+          <tr><td class="compare-cat" colspan="3">Timestamp Tools</td></tr>
+          <tr><td>Unix timestamp converter</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Timezone converter</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Duration &amp; age calculator</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Countdown timer</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Business days calculator</td><td>—</td><td>✓</td></tr>
+          <tr><td>Cron expression parser</td><td>—</td><td>✓</td></tr>
+          <tr><td>Saved timezone presets</td><td>—</td><td>✓</td></tr>
+          <tr><td>Conversion history</td><td>—</td><td>✓</td></tr>
+
+          <tr><td class="compare-cat" colspan="3">Color Tools</td></tr>
+          <tr><td>Color picker &amp; eyedropper</td><td>✓</td><td>✓</td></tr>
+          <tr><td>HEX / RGB / HSL / CMYK converter</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Shades generator</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Color mixer</td><td>✓</td><td>✓</td></tr>
+          <tr><td>WCAG contrast checker</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Palette generator &amp; saving</td><td>3 palettes</td><td>Unlimited</td></tr>
+          <tr><td>Export CSS vars / SCSS / JSON</td><td>—</td><td>✓</td></tr>
+          <tr><td>Gradient generator</td><td>—</td><td>✓</td></tr>
+          <tr><td>Colorblind simulator</td><td>—</td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <div class="faq-title">Questions &amp; answers</div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can I cancel anytime?</button>
+        <div class="faq-a">Yes. Cancel from your billing portal at any time. Your Pro access continues until the end of the current billing period.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is my payment secure?</button>
+        <div class="faq-a">All payments are processed by Stripe — we never see or store your card details. Stripe is PCI-DSS Level 1 certified.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do tools still work offline?</button>
+        <div class="faq-a">Yes. All processing — hashing, password generation, color conversion, timestamp math — happens entirely in your browser. Firebase only syncs your saved history and subscription status.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What happens to my data if I cancel?</button>
+        <div class="faq-a">Your saved data (palettes, history, presets) is retained in Firestore for 90 days after cancellation. You can export everything before cancelling.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is there a free trial?</button>
+        <div class="faq-a">Not currently, but the Free tier is genuinely useful — no credit card required, no time limit. Try it out and upgrade whenever you need the Pro features.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I switch between monthly and yearly?</button>
+        <div class="faq-a">Yes. Visit your billing portal to switch billing intervals. The change takes effect at the next renewal date.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer" style="background:var(--slate-800);color:var(--slate-300);padding:32px 24px;text-align:center;font-size:0.8rem">
+    <p>© 2024 mdothree.com — <a href="/" style="color:var(--emerald);text-decoration:none">Home</a> · <a href="/terms" style="color:var(--emerald);text-decoration:none">Terms</a> · <a href="/privacy" style="color:var(--emerald);text-decoration:none">Privacy</a></p>
+  </footer>
+  <script src="js/pages/pro.js" type="module"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
