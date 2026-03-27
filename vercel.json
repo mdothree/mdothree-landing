@@ -1,1 +1,8 @@
-{"version": 2}
+{
+  "version": 2,
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/pro", "destination": "/pro.html" },
+    { "source": "/success", "destination": "/success.html" }
+  ]
+}
